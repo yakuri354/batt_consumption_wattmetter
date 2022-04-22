@@ -116,18 +116,9 @@ var BatIndicator = GObject.registerClass(
         }
 
 
-        _meas(){
+        _meas() {
             const power = this._getPower();
-            
-            
-            if (power < 0 ) {
-                return 0;
-            } else {
-                let pStr = String(Math.round(power))
-                return pStr.length==1 ? "0"+pStr : pStr
-            }
-          
-            
+            return max(0, String(Math.round((power + Number.EPSILON) * 100) / 100));
         }
 
 
